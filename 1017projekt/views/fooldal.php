@@ -4,150 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Könyvesbolt</title>
-    <link rel="stylesheet" href="style.css">
-    
+    <link rel="stylesheet" href="./menu.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
-        * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f9f9f9;
-            color: #333;
-        }
-
-        header {
-            background-color: #6e3d30;
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-        }
-
-        h1 {
-            font-size: 2.5em;
-        }
-
-        nav {
-            margin-top: 10px;
-        }
-
-        nav ul {
-            list-style-type: none;
-        }
-
-        nav ul li {
-            display: inline;
-            margin: 0 15px;
-        }
-
-        nav a {
-            color: #ecf0f1;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        nav a:hover {
-            text-decoration: underline;
-        }
-
-        section {
-            padding: 40px 20px;
-            max-width: 800px;
-            margin: auto;
-        }
-
-        h2 {
-            color: #8f622f;
-            margin-bottom: 20px;
-        }
-
-        .book {
-            background-color: rgb(170, 145, 108);
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            margin: 15px 0;
-            padding: 15px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            transition: box-shadow 0.3s;
-        }
-
-        .book:hover {
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        footer {
-            background-color: #6e3d30;
-            color: white;
-            text-align: center;
-            padding: 15px 0;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-            margin-top: 20px;
-        }
-        
-
-        .navbar {
-            background-color: #f8f8f8;
-            border-bottom: 1px solid #ccc;
-        }
-
-        .category-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: space-around;
-        }
-
-        .category-list li {
-            padding: 15px 20px;
-        }
-
-        .category-list a {
-            text-decoration: none;
-            color: #333;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-        .category-list li {
-            padding: 15px 20px;
-            position: relative;
-        }
-
-        .category-list a:hover {
-            color: #007bff;
-        }
-
-        .category-content {
-            display: none; /* Alapértelmezés szerint elrejtjük */
-            position: absolute; /* Pozicionálás */
-            background: white;
-            border: 1px solid #ccc;
-            padding: 10px;
-            z-index: 1;
-        }
-
-        .category-list li:hover .category-content {
-            display: block; /* Megjelenítjük hover esetén */
-        }
+        <?php include 'menu.css'; ?>
+        <?php include 'termek.css'; ?>
     </style>
 </head>
 <body>
     <header>
-        <h1>Hold Antikvárium</h1>
-        <nav>
-            <ul>
-                <li><a href="#home">Kezdőlap</a></li>
-                <li><a href="#about">Rólunk</a></li>
-                <li><a href="#books">Termékek</a></li>
-                <li><a href="./felhasznalo.php">Felhasználó</a></li>
-                <li><a href="/1017projekt/registration" id="logOut">Kijelentkezés</a></li>
-            </ul>
-        </nav>
+    <div class="menu" id="myTopnav">
+            <a href="#fooldal" class="active">*név* antikvárium</a>
+            <a href="#about">rólunk</a>
+            <a href="#books">könyvek</a>
+            <a href="#cds">cd/dvd</a>
+            <a href="#contact">kapcsolat</a>
+            <a href="./felhasznalo.php">Felhasználó</a>
+            <a href="/1017projekt/registration" id="logOut">kijelentkezés</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+              <i class="fa fa-bars"></i>
+            </a>
+          </div>
     </header>
     
 
@@ -161,9 +38,9 @@
             
         </div>
     </section>
-    
+    <!--
     <nav class="navbar">
-        <!-- <ul class="category-list">
+         <ul class="category-list">
             <li>
                 <a href="#">Felnőtt könyvek</a>
                 <div class="category-content">
@@ -206,9 +83,9 @@
                     <p>Itt találhatók az e-könyvek.</p>
                 </div>
             </li>
-        </ul> -->
+        </ul>
 
-    </nav>
+    </nav> -->
 
     <section id="about">
         <h2>Rólunk</h2>
@@ -222,17 +99,21 @@
             <a href="dorian.html">Dorian Gray arcképe</a>
             <p>Szerző: Oscar Wilde</p>
             <img src="OIP.jfif" alt="Dorian Gray arcképe">
-        </div> -->
+        </div>
     </section>
 
     <section id="contact">
-        <h2>Kapcsolat</h2>
-        <p>Email: info@konyvesbolt.hu</p>
-        <p>Telefon: +36 1 234 5678</p>
+        <h2>Kapcsolat</h2> -->
+        
     </section>
 
     <footer>
         <p>&copy; 2024 Könyvesbolt. Minden jog fenntartva.</p>
+        <p>Email: info@konyvesbolt.hu</p>
+        <p>Telefon: +36 1 234 5678</p>
     </footer>
+    <script>
+        <?php include 'script.js'; ?>
+    </script>
 </body>
 </html>

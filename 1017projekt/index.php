@@ -13,6 +13,7 @@ $conn=new mysqli($servername, $username, $password, $dbname);
 $email="";
 switch ($path) {
     case "/1017projekt/registration":
+        session_unset(); 
         if ($conn->connect_error) {
             die("A csatlakozás sikertelen volt: " . $conn->connect_error);
         }
@@ -68,7 +69,7 @@ switch ($path) {
                             header("Location: " . $_SERVER['REQUEST_URI']);
                             exit();
                         } else {
-                            echo "Error: " . $conn->error;
+                            echo "Hiba: " . $conn->error;
                         }
                     }
                     
@@ -82,8 +83,7 @@ switch ($path) {
         require_once("./views/regisztracio.php");
         break;
     case "/1017projekt/":
-        $numOfUsersSql = $conn->query("SELECT COUNT(email) as count FROM felhasznalo");
-        $numOfUsersRow = $numOfUsersSql->fetch_assoc();
+        $numOfUsersRow = ($conn->query("SELECT COUNT(email) as count FROM felhasznalo"))->fetch_assoc();
         $numOfUsers = $numOfUsersRow['count'];
         echo "Csatlakozz az oldalunk " . $numOfUsers . " felhasználójához!";
         require_once('./views/cimlap.html');
@@ -91,22 +91,41 @@ switch ($path) {
     case "/1017projekt/views/fooldal.php":
         require_once('./views/fooldal.php');
         break;
+    case "/1017projekt/views/konyv.php":
+        require_once('./views/konyv.php');
+        break;
     case "/1017projekt/views/felhasznalo.php":
-        $email=$_SESSION['email'];
-        if($_SESSION["hasAddress"]===false){
+        $email=$_SESSION["email"];
+        echo "Az email címed: ".$email;
+        $hazszam = (($conn->query("select felhasznalo.cim from felhasznalo where email='$email'"))->fetch_assoc())["cim"];
+        if($hazszam=="none"){
+            $_SESSION["hasAddress"]=false;
+        }
+        else{
+            $_SESSION["hasAddress"]=true;
+        }
+        if($_SESSION["hasAddress"]==false){
             if(isset ($_POST['iranyitoszam']) && isset($_POST['utca']) && isset($_POST['hazszam'])){
                 $iranyitoszam=$_POST['iranyitoszam'];
                 $utca=$_POST['utca'];
                 $hazszam=$_POST['hazszam'];
-                $email=$_SESSION['email'];
-                $sqlAddress="update felhasznalo set iranyitoszam=$iranyitoszam, utca='$utca', cim='$hazszam' where email='$email'";
-                if($conn->query($sqlAddress)===TRUE){
-                    echo "Sikeres lakhely regisztráció";
-                    $_SESSION["hasAddress"]=true;
+                if($iranyitoszam!="" && $utca!="" && $hazszam!=""){
+                    $sqlAddress="update felhasznalo set iranyitoszam=$iranyitoszam, utca='$utca', cim='$hazszam' where email='$email'";
+                    if($conn->query($sqlAddress)===TRUE){
+                        echo "
+                        <script>
+                        alert('Sikeres lakhely regisztráció!');
+                        </script>
+                        ";
+                        $_SESSION["hasAddress"]=true;
+                    }
+                }
+                else{
+                    echo "Hiányosak az adataid!";
                 }
             }
         }
-        if($_SESSION["hasAddress"]===true){
+        if($_SESSION["hasAddress"]==true){
             $addressDatasRow = ($conn->query("select iranyitoszam, utca, cim from felhasznalo where email='$email' "))->fetch_assoc();
             $_SESSION["iranyitoszam"]=$addressDatasRow["iranyitoszam"];
             $_SESSION["utca"]=$addressDatasRow["utca"];

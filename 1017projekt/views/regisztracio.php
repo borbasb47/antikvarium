@@ -18,7 +18,7 @@
 </head>
 <body>
     <?php 
-    //echo $_SESSION["hasAddress"]
+    //$_SESSION["hasAddress"]
     ?>
     <button id="registrationButton">Regisztrálás</button>
     <button id="loginButton">Bejelentkezés</button>
@@ -32,11 +32,11 @@
         <br>
         <br>
         <h4>jelszó</h4>
-        <input type="text" id="password" name="password">
+        <input type="password" id="password" name="password">
         <br>
         <br>
         <h4>jelszó mégegyszer</h4>
-        <input type="text" id="passwordAgain" name="passwordAgain">
+        <input type="password" id="passwordAgain" name="passwordAgain">
         <input type="hidden" id="hiddenInputRegistration" name="hiddenInput" value="">
         <button id="submitData" name="submitData">Submit</button>
     </form>
@@ -48,7 +48,7 @@
         <br>
         <br>
         <h4>jelszó</h4>
-        <input type="text" id="loginPassword" name="loginPassword">
+        <input type="password" id="loginPassword" name="loginPassword">
         <input type="hidden" id="hiddenInputLogin" name="hiddenInput" value="">
         <button id="submitData" name="submitData">Submit</button>
     </form>

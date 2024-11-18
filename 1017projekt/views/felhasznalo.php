@@ -8,11 +8,8 @@
 </head>
 <body>
     <?php
-        $email=$_SESSION["email"];
-        echo "Az email címed: ".$email;
-        $hazszam = (($conn->query("select felhasznalo.cim from felhasznalo where email='$email'"))->fetch_assoc())["cim"];
-        if($hazszam=="none"){
-            $_SESSION["hasAddress"]=false;
+    
+        if($_SESSION["hasAddress"]==false){
             echo 
             "
             <h3 style='color:red'> Még nem adtad meg a lakhelyedet. Az alábbi mezőkben add meg az adataidat.</h3>
