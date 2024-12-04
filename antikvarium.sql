@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2024. Dec 04. 14:13
+-- Létrehozás ideje: 2024. Dec 04. 16:20
 -- Kiszolgáló verziója: 10.4.28-MariaDB
 -- PHP verzió: 8.2.4
 
@@ -89,8 +89,8 @@ CREATE TABLE `kosar` (
 
 CREATE TABLE `megrendeles` (
   `id` int(11) NOT NULL,
-  `kifizetve` int(11) NOT NULL,
-  `kisszalitva` int(11) NOT NULL
+  `kifizetve` tinyint(1) NOT NULL,
+  `kisszalitva` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
 
 -- --------------------------------------------------------
