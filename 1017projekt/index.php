@@ -4,13 +4,8 @@ session_start();
 $parsed = parse_url($_SERVER["REQUEST_URI"]); 
 $path = $parsed["path"];
 
-$servername="localhost";
-$username = "root";
-$password ="";
-$dbname="antikvarium";
+require_once("connection.php");
 
-$conn=new mysqli($servername, $username, $password, $dbname);
-$email="";
 switch ($path) {
     case "/1017projekt/registration":
         session_unset(); 
@@ -27,14 +22,14 @@ switch ($path) {
                 $emailExistCheck="select * from felhasznalo where email='$email'";
                 $emailExistCheckResult=$conn->query($emailExistCheck);
                 if($emailExistCheckResult->num_rows==0){
-                    echo "<h2 style='color:red'>Ezzel az emailel nem létezik fiók</h2>";
+                    echo "<script>alert('Ezzel az emailel nem létezik fiók')</script>";
                 }
                 else{
                     $row = $emailExistCheckResult->fetch_assoc();
                     $correctPassword=$row['jelszo'];
                     $isPasswordMatching=password_verify($password,$correctPassword);
                     if($isPasswordMatching==true){
-                        echo "<h2 style='color:green'>Helyes jelszó</h2>";
+                        echo "<script>alert('Helyes jelszó')</script>";
                         //sleep(seconds: 0.3);
                         $_SESSION['email']=$email;
                         header("Location: " . "./views/fooldal.php");
@@ -42,7 +37,7 @@ switch ($path) {
 
                     }
                     else{
-                        echo "<h2 style='color:red'>Rossz jelszó</h2>";
+                        echo "<script>alert('Rossz jelszó')</script>";
                     }
                 }
             }
@@ -83,9 +78,6 @@ switch ($path) {
         require_once("./views/regisztracio.php");
         break;
     case "/1017projekt/":
-        $numOfUsersRow = ($conn->query("SELECT COUNT(email) as count FROM felhasznalo"))->fetch_assoc();
-        $numOfUsers = $numOfUsersRow['count'];
-        echo "Csatlakozz az oldalunk " . $numOfUsers . " felhasználójához!";
         require_once('./views/cimlap.html');
         break;
     case "/1017projekt/views/fooldal.php":

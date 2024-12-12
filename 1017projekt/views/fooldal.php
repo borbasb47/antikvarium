@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Könyvesbolt</title>
-    <link rel="stylesheet" href="./menu.css">
+    <link rel="stylesheet" href="/public/menu.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         <?php include 'menu.css'; ?>
@@ -112,8 +112,6 @@
         <p>Email: info@konyvesbolt.hu</p>
         <p>Telefon: +36 1 234 5678</p>
     </footer>
-    <script>
-        <?php include 'script.js'; ?>
-    </script>
+    <script src="./script.js"></script>
 </body>
 </html>
