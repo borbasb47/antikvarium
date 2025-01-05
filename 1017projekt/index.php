@@ -6,9 +6,8 @@ $path = $parsed["path"];
 
 require_once("connection.php");
 
-echo($path);
 switch ($path) {
-    case "/1017projekt/registration":
+    case "/1017projekt/views/regisztracio.html":
         require_once("./views/regisztracio.html");
         break;
     case "/1017projekt/":
