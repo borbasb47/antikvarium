@@ -4,7 +4,7 @@
 $parsed = parse_url($_SERVER["REQUEST_URI"]); 
 $path = $parsed["path"];
 
-require_once("connection.php");
+require_once("api/connection.php");
 
 switch ($path) {
     case "/1017projekt/views/regisztracio.html":
