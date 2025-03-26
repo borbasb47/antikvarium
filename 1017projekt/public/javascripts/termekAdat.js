@@ -1,14 +1,13 @@
-
 function displayBookData(){
-    fetch('/1017projekt/api/termek.php')   
+    var productId = getQueryVariable("id");
+    fetch(`/1017projekt/api/termek.php?id=${productId}`)   
     .then(response => response.json())
     .then(adat => {
         console.log(adat)
-        const cim=document.createElement("h2")
-        cim.id="cim"
-        cim.innerHTML=adat["cim"]
-
+        console.log(productId)
     })
+    .catch(error => console.error('Hiba xd:', error));
+
 }
 
-displayBookData()
+document.addEventListener('DOMContentLoaded', displayBookData);
