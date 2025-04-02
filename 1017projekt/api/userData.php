@@ -12,6 +12,7 @@ if($_SERVER["REQUEST_METHOD"]==="GET"){
         }
         else{
             $userDataAssoc=mysqli_fetch_assoc($userData);
+            echo $_SESSION['id'];
             header('Content-Type: application/json');
             echo json_encode($userDataAssoc);
         }

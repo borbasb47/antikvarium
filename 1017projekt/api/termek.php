@@ -21,29 +21,4 @@ if($_SERVER["REQUEST_METHOD"]==="GET"){
         header("Content-Type: application/json");
         echo json_encode($row);
 }
-//echo '
-//    <h2 id="cim">'.$row['cim'].'</h2>
-//    <div id="content"     
-//        <div id="kep">
-//            <img src="'.$row['kepURL'].'" alt="Könyv címe"> <br>
-//            <button id="kosar">Kosárba</button>
-//            <h3>Leírás:</h3>
-//            <p id="leiras">'.$row['osszefoglalo'].'
-//            </p>
-//        </div     
-//        <section id="book-details"         
-//            <p id="szerzo"><strong>Szerző: </strong> '.$row['alkoto'].'</p> <hr>
-//            <p id="kiado"><strong>Kiadó: </strong> '.$row['forgalmazo'].'</p> <hr>
-//            <p id="megjelenes"><strong>Kiadás éve:</strong> '.$row['megjelenes'].'</p> <hr>
-//            <p id="allapot"><strong>Állapot:</strong> '.$row['allapot'].'</p> <hr>
-//            <p id="nyelv"><strong>Nyelv:</strong> '.$row['nyelv'].'</p> <hr>
-//            <p id="hossz"><strong>Hossz:</strong> '.$hossz.'</p> <hr>
-//            <p id="borito"><strong>Borító:</strong> '.$row['borito'].'</p> <hr>
-//            <p id="meret"><strong>Méret:</strong> '.$row['meret'].'</p> <hr>
-//            <p id="ar"><strong>Ár:</strong> '.$row['ar'].' Ft</p> <hr>
-//        </section>
-//    </div>
-//'
-
-    
 ?>
