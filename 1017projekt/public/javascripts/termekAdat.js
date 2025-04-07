@@ -59,6 +59,19 @@ document.getElementById("kosar").onclick=function(){
             },
             body: productJson
         })
+        .then(valasz => {
+            if(!valasz.ok)
+            {
+                throw new Error("hiba lépett fel!")
+            }
+            return valasz.json();
+        })
+        .then(adat => {
+            alert(adat.uzenet);
+        })
+        .catch(error => {
+            alert(error.message);
+        })
     }
 
 }
